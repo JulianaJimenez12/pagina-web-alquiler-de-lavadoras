@@ -1,0 +1,98 @@
+<svg viewBox="0 0 400 500" xmlns="http://www.w3.org/2000/svg">
+  <!-- Fondo -->
+  <rect width="400" height="500" fill="#F2F6F9"/>
+  
+  <!-- Cuerpo de la lavadora deluxe (más elegante) -->
+  <defs>
+    <linearGradient id="bodyGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#2C5C84;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1A3F5C;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect x="35" y="60" width="330" height="360" rx="30" fill="url(#bodyGrad)"/>
+  
+  <!-- Panel frontal con efecto 3D -->
+  <rect x="55" y="85" width="290" height="310" rx="25" fill="#34719E"/>
+  <rect x="55" y="85" width="290" height="40" rx="25" fill="white" opacity="0.08"/>
+  
+  <!-- Tambo de lujo (espejo) -->
+  <circle cx="200" cy="195" r="100" fill="#D4D4D4"/>
+  <circle cx="200" cy="195" r="96" fill="#F5F5F5"/>
+  
+  <!-- Patrón de orificios elegante -->
+  <g fill="#999999" opacity="0.9">
+    <!-- Fila 1 -->
+    <circle cx="130" cy="130" r="5.5"/>
+    <circle cx="170" cy="115" r="5.5"/>
+    <circle cx="210" cy="110" r="5.5"/>
+    <circle cx="250" cy="115" r="5.5"/>
+    <circle cx="290" cy="130" r="5.5"/>
+    <!-- Fila 2 -->
+    <circle cx="110" cy="170" r="5.5"/>
+    <circle cx="155" cy="150" r="5.5"/>
+    <circle cx="245" cy="150" r="5.5"/>
+    <circle cx="290" cy="170" r="5.5"/>
+    <!-- Centro -->
+    <circle cx="125" cy="195" r="5.5"/>
+    <circle cx="170" cy="195" r="5.5"/>
+    <circle cx="230" cy="195" r="5.5"/>
+    <circle cx="275" cy="195" r="5.5"/>
+    <!-- Fila 3 -->
+    <circle cx="110" cy="220" r="5.5"/>
+    <circle cx="155" cy="240" r="5.5"/>
+    <circle cx="245" cy="240" r="5.5"/>
+    <circle cx="290" cy="220" r="5.5"/>
+    <!-- Fila 4 -->
+    <circle cx="130" cy="260" r="5.5"/>
+    <circle cx="170" cy="275" r="5.5"/>
+    <circle cx="210" cy="280" r="5.5"/>
+    <circle cx="250" cy="275" r="5.5"/>
+    <circle cx="290" cy="260" r="5.5"/>
+  </g>
+  
+  <!-- Puerta con efecto de profundidad -->
+  <circle cx="200" cy="195" r="85" fill="none" stroke="#555555" stroke-width="3"/>
+  <circle cx="200" cy="195" r="83" fill="none" stroke="#A7D3E8" stroke-width="1" opacity="0.6"/>
+  
+  <!-- Asa de lujo (cromada) -->
+  <g>
+    <path d="M 260 180 Q 270 190 260 200" stroke="#AAAAAA" stroke-width="6" fill="none" stroke-linecap="round"/>
+    <circle cx="260" cy="190" r="10" fill="#CCCCCC"/>
+    <circle cx="260" cy="190" r="7" fill="#E8E8E8"/>
+  </g>
+  
+  <!-- Panel de controles inteligente -->
+  <rect x="70" y="305" width="260" height="75" rx="18" fill="#1A3F5C"/>
+  
+  <!-- Pantalla digital grande -->
+  <rect x="90" y="315" width="200" height="30" rx="8" fill="#000000"/>
+  <text x="190" y="337" font-size="16" fill="#A7D3E8" text-anchor="middle" font-family="Arial" font-weight="bold">AI SMART 30MIN</text>
+  
+  <!-- Botones táctiles premium -->
+  <rect x="90" y="355" width="200" height="12" rx="6" fill="#2C5C84" opacity="0.5"/>
+  <circle cx="100" cy="357" r="8" fill="#A7D3E8"/>
+  <circle cx="140" cy="357" r="8" fill="#A7D3E8"/>
+  <circle cx="180" cy="357" r="8" fill="#A7D3E8"/>
+  <circle cx="220" cy="357" r="8" fill="#A7D3E8"/>
+  <circle cx="260" cy="357" r="8" fill="#A7D3E8"/>
+  <circle cx="290" cy="357" r="8" fill="#A7D3E8"/>
+  
+  <!-- Indicadores de estado -->
+  <circle cx="100" cy="375" r="3.5" fill="#A7D3E8"/>
+  <circle cx="140" cy="375" r="3.5" fill="#A7D3E8" opacity="0.5"/>
+  <circle cx="180" cy="375" r="3.5" fill="#A7D3E8"/>
+  <circle cx="220" cy="375" r="3.5" fill="#A7D3E8" opacity="0.5"/>
+  <circle cx="260" cy="375" r="3.5" fill="#A7D3E8"/>
+  <circle cx="290" cy="375" r="3.5" fill="#A7D3E8" opacity="0.5"/>
+  
+  <!-- Patas elegantes -->
+  <rect x="65" y="420" width="20" height="50" fill="#2C5C84" rx="5"/>
+  <rect x="315" y="420" width="20" height="50" fill="#2C5C84" rx="5"/>
+  <rect x="150" y="420" width="20" height="50" fill="#2C5C84" rx="5"/>
+  <rect x="230" y="420" width="20" height="50" fill="#2C5C84" rx="5"/>
+  
+  <!-- Brillos premium -->
+  <ellipse cx="120" cy="120" rx="40" ry="70" fill="white" opacity="0.18"/>
+  <ellipse cx="280" cy="160" rx="25" ry="50" fill="white" opacity="0.1"/>
+  <ellipse cx="150" cy="250" rx="15" ry="30" fill="white" opacity="0.06"/>
+</svg>

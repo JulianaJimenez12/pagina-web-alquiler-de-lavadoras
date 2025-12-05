@@ -1,0 +1,70 @@
+<svg viewBox="0 0 400 600" xmlns="http://www.w3.org/2000/svg">
+  <!-- Fondo azul claro -->
+  <rect width="400" height="600" fill="#A7D3E8"/>
+  
+  <!-- Contenedor blanco de la lavadora -->
+  <rect x="60" y="80" width="280" height="380" rx="20" fill="#FFFFFF" stroke="#2C5C84" stroke-width="2"/>
+  
+  <!-- Sombra bajo la lavadora -->
+  <ellipse cx="200" cy="470" rx="130" ry="20" fill="#00000010"/>
+  
+  <!-- Panel de control superior -->
+  <rect x="80" y="110" width="240" height="50" rx="10" fill="#F5F9FB" stroke="#2C5C84" stroke-width="2"/>
+  
+  <!-- Botón/Selector izquierdo -->
+  <rect x="100" y="125" width="30" height="20" rx="3" fill="#E3F2FD" stroke="#A7D3E8" stroke-width="1.5"/>
+  <rect x="103" y="128" width="24" height="14" fill="#B3E5FC"/>
+  
+  <!-- Ruedecilla de control -->
+  <circle cx="160" cy="135" r="10" fill="#F5F9FB" stroke="#2C5C84" stroke-width="1.5"/>
+  <line x1="160" y1="128" x2="160" y2="118" stroke="#2C5C84" stroke-width="1.5" stroke-linecap="round"/>
+  
+  <!-- Puntos indicadores (derechos) -->
+  <circle cx="210" cy="127" r="2.5" fill="#A7D3E8"/>
+  <circle cx="225" cy="127" r="2.5" fill="#A7D3E8"/>
+  <circle cx="240" cy="127" r="2.5" fill="#A7D3E8"/>
+  <circle cx="255" cy="127" r="2.5" fill="#A7D3E8"/>
+  
+  <!-- Línea separadora -->
+  <line x1="80" y1="175" x2="320" y2="175" stroke="#D0E8F2" stroke-width="1.5" opacity="0.7"/>
+  
+  <!-- Marco del tambor -->
+  <rect x="85" y="195" width="230" height="250" rx="15" fill="#F8FBFD"/>
+  
+  <!-- Círculo exterior del tambor -->
+  <circle cx="200" cy="320" r="105" fill="#FFFFFF" stroke="#2C5C84" stroke-width="3"/>
+  
+  <!-- Degradado interior del tambor -->
+  <defs>
+    <radialGradient id="tambor-grad" cx="40%" cy="40%">
+      <stop offset="0%" style="stop-color:#E8F4F8;stop-opacity:1" />
+      <stop offset="70%" style="stop-color:#C5E3F0;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#2C5C84;stop-opacity:0.4" />
+    </radialGradient>
+  </defs>
+  <circle cx="200" cy="320" r="100" fill="url(#tambor-grad)"/>
+  
+  <!-- Aros decorativos del tambor -->
+  <circle cx="200" cy="320" r="90" fill="none" stroke="#A7D3E8" stroke-width="2" opacity="0.6"/>
+  <circle cx="200" cy="320" r="75" fill="none" stroke="#A7D3E8" stroke-width="1.5" opacity="0.4"/>
+  <circle cx="200" cy="320" r="55" fill="none" stroke="#2C5C84" stroke-width="1" opacity="0.2"/>
+  
+  <!-- Centro del tambor (negro profundo) -->
+  <circle cx="200" cy="320" r="12" fill="#1A3A52"/>
+  
+  <!-- Brillo del tambor -->
+  <circle cx="170" cy="290" r="35" fill="#FFFFFF" opacity="0.3"/>
+  
+  <!-- Panel inferior -->
+  <rect x="100" y="460" width="200" height="35" rx="8" fill="#F5F9FB" stroke="#2C5C84" stroke-width="1.5"/>
+  
+  <!-- Indicadores de estado -->
+  <circle cx="135" cy="475" r="3.5" fill="#A7D3E8" opacity="0.7"/>
+  <circle cx="160" cy="475" r="3.5" fill="#A7D3E8" opacity="0.7"/>
+  <circle cx="185" cy="475" r="3.5" fill="#2C5C84" opacity="0.5"/>
+  <circle cx="210" cy="475" r="3.5" fill="#A7D3E8" opacity="0.7"/>
+  
+  <!-- Botón de inicio/control -->
+  <circle cx="265" cy="477" r="8" fill="#E3F2FD" stroke="#2C5C84" stroke-width="1.5"/>
+  <circle cx="265" cy="477" r="5" fill="#B3E5FC"/>
+</svg>

@@ -1,0 +1,98 @@
+<svg viewBox="0 0 400 500" xmlns="http://www.w3.org/2000/svg">
+  <!-- Fondo -->
+  <rect width="400" height="500" fill="#F2F6F9"/>
+  
+  <!-- LAVADORA (Izquierda) -->
+  <!-- Cuerpo -->
+  <rect x="25" y="80" width="145" height="280" rx="15" fill="#2C5C84"/>
+  <rect x="35" y="100" width="125" height="240" rx="12" fill="#34719E"/>
+  
+  <!-- Tambo -->
+  <circle cx="97.5" cy="160" r="50" fill="#444444"/>
+  <circle cx="97.5" cy="160" r="47" fill="#555555"/>
+  <g fill="#777777" opacity="0.7">
+    <circle cx="75" cy="145" r="4"/>
+    <circle cx="97.5" cy="135" r="4"/>
+    <circle cx="120" cy="145" r="4"/>
+    <circle cx="130" cy="165" r="4"/>
+    <circle cx="120" cy="185" r="4"/>
+    <circle cx="97.5" cy="195" r="4"/>
+    <circle cx="75" cy="185" r="4"/>
+    <circle cx="65" cy="165" r="4"/>
+  </g>
+  <circle cx="97.5" cy="160" r="43" fill="none" stroke="#666666" stroke-width="2"/>
+  
+  <!-- Puerta -->
+  <circle cx="97.5" cy="160" r="38" fill="none" stroke="#999999" stroke-width="2"/>
+  <circle cx="120" cy="160" r="6" fill="#AAAAAA"/>
+  
+  <!-- Panel controles mini -->
+  <rect x="40" y="220" width="115" height="35" rx="8" fill="#555555"/>
+  <circle cx="52" cy="232" r="5" fill="#A7D3E8"/>
+  <circle cx="72" cy="232" r="5" fill="#A7D3E8"/>
+  <circle cx="92" cy="232" r="5" fill="#A7D3E8"/>
+  <circle cx="112" cy="232" r="5" fill="#A7D3E8"/>
+  <circle cx="130" cy="232" r="5" fill="#A7D3E8"/>
+  <circle cx="62" cy="248" r="3" fill="#A7D3E8"/>
+  <circle cx="92" cy="248" r="3" fill="#A7D3E8"/>
+  <circle cx="122" cy="248" r="3" fill="#A7D3E8"/>
+  
+  <!-- Patas lavadora -->
+  <rect x="38" y="360" width="8" height="25" fill="#2C5C84" rx="2"/>
+  <rect x="127" y="360" width="8" height="25" fill="#2C5C84" rx="2"/>
+  
+  <!-- SECADORA (Derecha) -->
+  <!-- Cuerpo -->
+  <rect x="230" y="80" width="145" height="280" rx="15" fill="#2C5C84"/>
+  <rect x="240" y="100" width="125" height="240" rx="12" fill="#34719E"/>
+  
+  <!-- Tambo -->
+  <circle cx="302.5" cy="160" r="50" fill="#666666"/>
+  <circle cx="302.5" cy="160" r="47" fill="#777777"/>
+  
+  <!-- Aletas -->
+  <g fill="#999999" opacity="0.8">
+    <path d="M 302.5 115 L 325 145 L 310 155 Z"/>
+    <path d="M 347.5 160 L 320 175 L 320 145 Z"/>
+    <path d="M 302.5 205 L 280 185 L 295 175 Z"/>
+    <path d="M 257.5 160 L 285 145 L 285 175 Z"/>
+  </g>
+  
+  <!-- Ventana -->
+  <circle cx="302.5" cy="160" r="40" fill="none" stroke="#888888" stroke-width="2"/>
+  <circle cx="302.5" cy="160" r="38" fill="none" stroke="#A7D3E8" stroke-width="1" opacity="0.5"/>
+  
+  <!-- Asa secadora -->
+  <circle cx="330" cy="160" r="6" fill="#999999"/>
+  
+  <!-- Panel controles secadora -->
+  <rect x="245" y="220" width="115" height="35" rx="8" fill="#555555"/>
+  
+  <!-- Perilla temperatura -->
+  <circle cx="265" cy="232" r="8" fill="#34719E"/>
+  <rect x="263" y="223" width="4" height="9" fill="#A7D3E8"/>
+  
+  <!-- Perilla tiempo -->
+  <circle cx="302.5" cy="232" r="8" fill="#34719E"/>
+  <polygon points="302.5,223 308,230 297,230" fill="#A7D3E8"/>
+  
+  <!-- Botón inicio -->
+  <circle cx="340" cy="232" r="8" fill="#2C5C84"/>
+  <circle cx="340" cy="232" r="6" fill="#A7D3E8"/>
+  
+  <!-- Indicadores -->
+  <circle cx="265" cy="248" r="2.5" fill="#A7D3E8"/>
+  <circle cx="302.5" cy="248" r="2.5" fill="#A7D3E8"/>
+  <circle cx="340" cy="248" r="2.5" fill="#A7D3E8"/>
+  
+  <!-- Patas secadora -->
+  <rect x="243" y="360" width="8" height="25" fill="#2C5C84" rx="2"/>
+  <rect x="332" y="360" width="8" height="25" fill="#2C5C84" rx="2"/>
+  
+  <!-- Línea divisoria -->
+  <line x1="200" y1="80" x2="200" y2="390" stroke="#A7D3E8" stroke-width="2" opacity="0.3"/>
+  
+  <!-- Brillos -->
+  <ellipse cx="55" cy="125" rx="20" ry="35" fill="white" opacity="0.1"/>
+  <ellipse cx="265" cy="125" rx="20" ry="35" fill="white" opacity="0.1"/>
+</svg>

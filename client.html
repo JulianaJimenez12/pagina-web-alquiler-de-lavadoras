@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Cuenta - Lavadoras Violetta</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="css/styles.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary-dark sticky-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.html">
+                <img src="assets/logo.svg" alt="Lavadoras Violetta" height="40" class="me-2">
+                <span>Lavadoras Violetta</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">
+                            <i class="fas fa-home"></i> Inicio
+                        </a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown">
+                            <i class="fas fa-user-circle"></i> <span id="userNameNav">Mi Cuenta</span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                            <li><a class="dropdown-item" href="#perfil" onclick="showTab('perfil')">
+                                <i class="fas fa-user"></i> Mi Perfil
+                            </a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" style="color: #2C5C84;" onclick="logoutClient()">
+                                <i class="fas fa-sign-out-alt"></i> Cerrar Sesión
+                            </a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container-fluid py-4">
+        <!-- Tabs Navigation -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <ul class="nav nav-tabs" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="historial-tab" onclick="showTab('historial')" type="button" role="tab">
+                            <i class="fas fa-history"></i> Mis Pedidos
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="perfil-tab" onclick="showTab('perfil')" type="button" role="tab">
+                            <i class="fas fa-user"></i> Mi Perfil
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Content Tabs -->
+        <div class="row">
+            <div class="col-12">
+                <!-- Mis Pedidos Tab -->
+                <div id="historial" class="tab-content">
+                    <div class="card">
+                        <div class="card-header bg-primary-dark text-white d-flex justify-content-between align-items-center">
+                            <h5 class="mb-0">Historial de Pedidos</h5>
+                            <div>
+                                <select class="form-select form-select-sm d-inline-block" id="filterStatus" style="max-width: 150px;" onchange="filterClientOrders()">
+                                    <option value="">Todos los estados</option>
+                                    <option value="pendiente">Pendiente</option>
+                                    <option value="confirmado">Confirmado</option>
+                                    <option value="en_progreso">En Progreso</option>
+                                    <option value="completado">Completado</option>
+                                    <option value="cancelado">Cancelado</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table table-hover mb-0">
+                                <thead class="table-light">
+                                    <tr>
+                                        <th>ID Pedido</th>
+                                        <th>Servicio</th>
+                                        <th>Fecha de Entrega</th>
+                                        <th>Horas</th>
+                                        <th>Total</th>
+                                        <th>Estado</th>
+                                        <th>Fecha de Creación</th>
+                                        <th>Acciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="clientOrdersTable">
+                                    <tr class="text-center">
+                                        <td colspan="8" class="py-4 text-muted">
+                                            <i class="fas fa-inbox fa-2x mb-2 d-block"></i>
+                                            No hay pedidos registrados
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Estadísticas del Cliente -->
+                    <div class="row mt-4 g-3">
+                        <div class="col-md-3">
+                            <div class="card bg-primary-dark text-white h-100">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between align-items-start">
+                                        <div>
+                                            <p class="card-text opacity-75">Total Pedidos</p>
+                                            <h3 class="mb-0" id="clientTotalOrders">0</h3>
+                                        </div>
+                                        <i class="fas fa-shopping-cart fa-2x opacity-50"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="card" style="background: linear-gradient(135deg, #A7D3E8 0%, #2C5C84 100%); color: white;" class="text-white h-100">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between align-items-start">
+                                        <div>
+                                            <p class="card-text opacity-75">Completados</p>
+                                            <h3 class="mb-0" id="clientCompletedOrders">0</h3>
+                                        </div>
+                                        <i class="fas fa-check-circle fa-2x opacity-50"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="card" style="background: linear-gradient(135deg, #2C5C84 0%, #A7D3E8 100%); color: white;" class="text-white h-100">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between align-items-start">
+                                        <div>
+                                            <p class="card-text opacity-75">En Progreso</p>
+                                            <h3 class="mb-0" id="clientActiveOrders">0</h3>
+                                        </div>
+                                        <i class="fas fa-hourglass-half fa-2x opacity-50"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="card" style="background: linear-gradient(135deg, #A7D3E8 0%, #2C5C84 100%); color: white;" class="text-white h-100">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between align-items-start">
+                                        <div>
+                                            <p class="card-text opacity-75">Gasto Total</p>
+                                            <h3 class="mb-0" id="clientTotalSpent">$0</h3>
+                                        </div>
+                                        <i class="fas fa-dollar-sign fa-2x opacity-50"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mi Perfil Tab -->
+                <div id="perfil" class="tab-content d-none">
+                    <div class="card">
+                        <div class="card-header bg-primary-dark text-white">
+                            <h5 class="mb-0">Mi Perfil</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label class="form-label fw-bold">Nombre Completo</label>
+                                        <p class="form-control-plaintext" id="profileName">-</p>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label fw-bold">Correo Electrónico</label>
+                                        <p class="form-control-plaintext" id="profileEmail">-</p>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label fw-bold">Teléfono</label>
+                                        <p class="form-control-plaintext" id="profilePhone">-</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label class="form-label fw-bold">Miembro Desde</label>
+                                        <p class="form-control-plaintext" id="profileDate">-</p>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label fw-bold">Total de Pedidos</label>
+                                        <p class="form-control-plaintext" id="profileTotalOrders">-</p>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label fw-bold">Gasto Acumulado</label>
+                                        <p class="form-control-plaintext" id="profileTotalSpent">-</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <hr>
+
+                            <h6 class="fw-bold mb-3">Cambiar Contraseña</h6>
+                            <form id="changePasswordForm" onsubmit="handleChangePassword(event)">
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="currentPassword" class="form-label">Contraseña Actual</label>
+                                        <input type="password" class="form-control" id="currentPassword" required>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="newPassword" class="form-label">Nueva Contraseña</label>
+                                        <input type="password" class="form-control" id="newPassword" minlength="6" required>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="confirmNewPassword" class="form-label">Confirmar Nueva Contraseña</label>
+                                        <input type="password" class="form-control" id="confirmNewPassword" minlength="6" required>
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-primary-dark">
+                                    <i class="fas fa-key"></i> Cambiar Contraseña
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para ver detalles del pedido -->
+    <div class="modal fade" id="orderDetailsModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-primary-dark text-white">
+                    <h5 class="modal-title">Detalles del Pedido</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body" id="orderDetailsContent">
+                    <!-- Se llenará dinámicamente -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/client.js"></script>
+</body>
+</html>

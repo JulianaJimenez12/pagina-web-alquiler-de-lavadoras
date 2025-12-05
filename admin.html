@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel Administrativo - Lavadoras Violetta</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="css/styles.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary-dark sticky-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <img src="assets/logo.svg" alt="Lavadoras Violetta" height="40" class="me-2">
+                <span>Lavadoras Violetta - Admin</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">
+                            <i class="fas fa-home"></i> Inicio
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <button class="btn btn-sm ms-2" style="background-color: #2C5C84; color: white;" onclick="logout()">
+                            <i class="fas fa-sign-out-alt"></i> Cerrar Sesión
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Login Modal -->
+    <div class="modal fade" id="loginModal" tabindex="-1" data-bs-backdrop="static">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header bg-primary-dark text-white">
+                    <h5 class="modal-title">Acceso Administrativo</h5>
+                </div>
+                <div class="modal-body">
+                    <div class="alert alert-info mb-3">
+                        <i class="fas fa-info-circle"></i>
+                        <strong>Redirección</strong>
+                        <p class="mb-0 mt-2 small">Por favor, inicia sesión en la página de autenticación</p>
+                    </div>
+                    <p class="text-center text-muted mb-0">Serás redirigido en breve...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div id="adminContent" class="d-none">
+        <div class="container-fluid py-4">
+            <!-- Estadísticas -->
+            <div class="row mb-4">
+                <div class="col-md-3">
+                    <div class="card bg-primary-dark text-white">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-start">
+                                <div>
+                                    <p class="card-text opacity-75">Pedidos Totales</p>
+                                    <h3 class="mb-0" id="totalOrders">0</h3>
+                                </div>
+                                <i class="fas fa-shopping-cart fa-2x opacity-50"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card" style="background: linear-gradient(135deg, #A7D3E8 0%, #2C5C84 100%); color: white;">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-start">
+                                <div>
+                                    <p class="card-text opacity-75">Pedidos Activos</p>
+                                    <h3 class="mb-0" id="activeOrders">0</h3>
+                                </div>
+                                <i class="fas fa-circle-check fa-2x opacity-50"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card" style="background: linear-gradient(135deg, #2C5C84 0%, #A7D3E8 100%); color: white;">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-start">
+                                <div>
+                                    <p class="card-text opacity-75">Ingresos Totales</p>
+                                    <h3 class="mb-0" id="totalRevenue">$0</h3>
+                                </div>
+                                <i class="fas fa-dollar-sign fa-2x opacity-50"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card" style="background: linear-gradient(135deg, #A7D3E8 0%, #2C5C84 100%); color: white;">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-start">
+                                <div>
+                                    <p class="card-text opacity-75">Pendientes</p>
+                                    <h3 class="mb-0" id="pendingOrders">0</h3>
+                                </div>
+                                <i class="fas fa-hourglass-half fa-2x opacity-50"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Controles -->
+            <div class="row mb-4">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-center flex-wrap gap-2">
+                                <h5 class="card-title mb-0">Gestionar Pedidos</h5>
+                                <div class="d-flex gap-2">
+                                    <input type="text" class="form-control form-control-sm" id="searchInput" 
+                                           placeholder="Buscar por cliente o teléfono..." style="max-width: 250px;">
+                                    <select class="form-select form-select-sm" id="filterStatus" style="max-width: 150px;">
+                                        <option value="">Todos los estados</option>
+                                        <option value="pendiente">Pendiente</option>
+                                        <option value="confirmado">Confirmado</option>
+                                        <option value="en_progreso">En Progreso</option>
+                                        <option value="completado">Completado</option>
+                                        <option value="cancelado">Cancelado</option>
+                                    </select>
+                                    <button class="btn btn-sm" style="background-color: #2C5C84; color: white;" onclick="clearAllOrders()">
+                                        <i class="fas fa-trash"></i> Limpiar Datos
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tabla de Pedidos -->
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="table-responsive">
+                            <table class="table table-hover mb-0">
+                                <thead class="table-light">
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Cliente</th>
+                                        <th>Servicio</th>
+                                        <th>Teléfono</th>
+                                        <th>Fecha</th>
+                                        <th>Horas</th>
+                                        <th>Total</th>
+                                        <th>Estado</th>
+                                        <th>Acciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="ordersTable">
+                                    <tr class="text-center">
+                                        <td colspan="9" class="py-4 text-muted">
+                                            <i class="fas fa-inbox fa-2x mb-2 d-block"></i>
+                                            No hay pedidos registrados
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para editar pedido -->
+    <div class="modal fade" id="editOrderModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-primary-dark text-white">
+                    <h5 class="modal-title">Editar Pedido</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="editOrderForm">
+                        <input type="hidden" id="editOrderId">
+                        <div class="mb-3">
+                            <label for="editClientName" class="form-label">Nombre del Cliente</label>
+                            <input type="text" class="form-control" id="editClientName" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="editClientEmail" class="form-label">Correo</label>
+                            <input type="email" class="form-control" id="editClientEmail" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="editClientPhone" class="form-label">Teléfono</label>
+                            <input type="tel" class="form-control" id="editClientPhone" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="editOrderStatus" class="form-label">Estado</label>
+                            <select class="form-select" id="editOrderStatus" required>
+                                <option value="pendiente">Pendiente</option>
+                                <option value="confirmado">Confirmado</option>
+                                <option value="en_progreso">En Progreso</option>
+                                <option value="completado">Completado</option>
+                                <option value="cancelado">Cancelado</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="editNotes" class="form-label">Notas</label>
+                            <textarea class="form-control" id="editNotes" rows="3"></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary-dark" onclick="saveEditOrder()">Guardar Cambios</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para detalles del pedido -->
+    <div class="modal fade" id="viewOrderModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-primary-dark text-white">
+                    <h5 class="modal-title">Detalles del Pedido</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body" id="orderDetails">
+                    <!-- Se llenará dinámicamente -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/admin.js"></script>
+</body>
+</html>

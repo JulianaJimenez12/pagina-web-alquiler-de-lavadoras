@@ -1,0 +1,56 @@
+<svg viewBox="0 0 400 500" xmlns="http://www.w3.org/2000/svg">
+  <!-- Fondo -->
+  <rect width="400" height="500" fill="#F2F6F9"/>
+  
+  <!-- Cuerpo de la lavadora -->
+  <rect x="50" y="80" width="300" height="320" rx="20" fill="#2C5C84"/>
+  
+  <!-- Panel frontal -->
+  <rect x="70" y="100" width="260" height="280" rx="15" fill="#34719E"/>
+  
+  <!-- Tambo (Drum) -->
+  <circle cx="200" cy="180" r="90" fill="#444444"/>
+  
+  <!-- Círculos del tambo -->
+  <g stroke="#666" stroke-width="2" fill="none">
+    <circle cx="150" cy="140" r="8"/>
+    <circle cx="200" cy="120" r="8"/>
+    <circle cx="250" cy="140" r="8"/>
+    <circle cx="270" cy="180" r="8"/>
+    <circle cx="250" cy="220" r="8"/>
+    <circle cx="200" cy="240" r="8"/>
+    <circle cx="150" cy="220" r="8"/>
+    <circle cx="130" cy="180" r="8"/>
+    <circle cx="200" cy="180" r="8"/>
+  </g>
+  
+  <!-- Puerta del tambo -->
+  <circle cx="200" cy="180" r="75" fill="none" stroke="#555555" stroke-width="3"/>
+  
+  <!-- Asa de la puerta -->
+  <circle cx="250" cy="180" r="12" fill="#888888"/>
+  
+  <!-- Panel de controles -->
+  <rect x="90" y="290" width="220" height="60" rx="10" fill="#555555"/>
+  
+  <!-- Botones de control -->
+  <circle cx="120" cy="310" r="8" fill="#A7D3E8"/>
+  <circle cx="120" cy="335" r="8" fill="#A7D3E8"/>
+  <circle cx="200" cy="310" r="8" fill="#A7D3E8"/>
+  <circle cx="200" cy="335" r="8" fill="#A7D3E8"/>
+  <circle cx="280" cy="310" r="8" fill="#A7D3E8"/>
+  <circle cx="280" cy="335" r="8" fill="#A7D3E8"/>
+  
+  <!-- Pantalla LED -->
+  <rect x="130" y="265" width="140" height="15" rx="3" fill="#222222"/>
+  <text x="200" y="276" font-size="10" fill="#A7D3E8" text-anchor="middle" font-family="Arial">40 MIN</text>
+  
+  <!-- Patas -->
+  <rect x="70" y="400" width="15" height="35" fill="#2C5C84" rx="3"/>
+  <rect x="315" y="400" width="15" height="35" fill="#2C5C84" rx="3"/>
+  <rect x="140" y="400" width="15" height="35" fill="#2C5C84" rx="3"/>
+  <rect x="245" y="400" width="15" height="35" fill="#2C5C84" rx="3"/>
+  
+  <!-- Brillo/Reflejo -->
+  <ellipse cx="120" cy="140" rx="30" ry="50" fill="white" opacity="0.1"/>
+</svg>
