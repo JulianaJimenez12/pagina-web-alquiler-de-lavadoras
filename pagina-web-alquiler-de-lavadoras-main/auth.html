@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Autenticación - Lavadoras Violetta</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="css/styles.css" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(135deg, #2C5C84 0%, #4A7BA7 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .auth-container {
+            max-width: 450px;
+            width: 100%;
+            margin: auto;
+        }
+        
+        .auth-card {
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+            border-radius: 15px;
+            overflow: hidden;
+            animation: slideInUp 0.5s ease-out;
+        }
+        
+        .auth-header {
+            background: linear-gradient(135deg, #2C5C84, #4A7BA7);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+        
+        .auth-header i {
+            font-size: 3rem;
+            color: #A7D3E8;
+            margin-bottom: 10px;
+            display: block;
+        }
+        
+        .auth-header h2 {
+            margin: 0;
+            font-weight: 800;
+            font-size: 1.8rem;
+        }
+        
+        .auth-header p {
+            margin: 10px 0 0 0;
+            opacity: 0.9;
+            font-size: 0.9rem;
+        }
+        
+        .auth-body {
+            padding: 40px;
+            background: white;
+        }
+        
+        .tab-nav {
+            display: flex;
+            gap: 0;
+            margin-bottom: 30px;
+            background-color: #F2F6F9;
+            border-radius: 10px;
+            padding: 4px;
+        }
+        
+        .tab-nav button {
+            flex: 1;
+            padding: 12px;
+            border: none;
+            background: transparent;
+            color: #666;
+            font-weight: 600;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+        
+        .tab-nav button.active {
+            background-color: white;
+            color: #2C5C84;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-label {
+            font-weight: 600;
+            color: #2C5C84;
+            margin-bottom: 8px;
+        }
+        
+        .form-control {
+            border: 2px solid #ecf0f1;
+            border-radius: 8px;
+            padding: 12px 15px;
+            transition: all 0.3s ease;
+        }
+        
+        .form-control:focus {
+            border-color: #A7D3E8;
+            box-shadow: 0 0 0 0.2rem rgba(167, 211, 232, 0.25);
+        }
+        
+        .btn-auth {
+            width: 100%;
+            padding: 12px;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-login {
+            background-color: #2C5C84;
+            color: white;
+            border: none;
+        }
+        
+        .btn-login:hover {
+            background-color: #4A7BA7;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 15px rgba(44, 74, 110, 0.3);
+            color: white;
+        }
+        
+        .auth-footer {
+            text-align: center;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #ecf0f1;
+        }
+        
+        .auth-footer p {
+            color: #666;
+            font-size: 0.9rem;
+            margin: 0;
+        }
+        
+        .auth-footer a {
+            color: #2C5C84;
+            text-decoration: none;
+            font-weight: 600;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+        
+        .auth-footer a:hover {
+            color: #A7D3E8;
+        }
+        
+        .form-tab {
+            display: none;
+        }
+        
+        .form-tab.active {
+            display: block;
+            animation: fadeIn 0.3s ease-in;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        
+        .alert {
+            border-radius: 8px;
+            border: none;
+            margin-bottom: 20px;
+        }
+        
+        .back-link {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .back-link:hover {
+            color: #A7D3E8;
+            transform: translateX(-3px);
+        }
+    </style>
+</head>
+<body>
+    <!-- Back Link -->
+    <div style="position: absolute; top: 20px; left: 20px;">
+        <a href="index.html" class="back-link">
+            <i class="fas fa-arrow-left"></i> Volver
+        </a>
+    </div>
+
+    <div class="auth-container">
+        <!-- Auth Card -->
+        <div class="auth-card">
+            <!-- Header -->
+            <div class="auth-header">
+                <img src="assets/logo.svg" alt="Lavadoras Violetta" style="height: 80px; margin-bottom: 15px;">
+                <h2>Lavadoras Violetta</h2>
+                <p>Tu cuenta de cliente</p>
+            </div>
+
+            <!-- Body -->
+            <div class="auth-body">
+                <!-- Alertas -->
+                <div id="authAlert"></div>
+
+                <!-- Tab Navigation -->
+                <div class="tab-nav">
+                    <button class="tab-btn active" onclick="switchTab('login')">
+                        <i class="fas fa-sign-in-alt"></i> Iniciar Sesión
+                    </button>
+                    <button class="tab-btn" onclick="switchTab('register')">
+                        <i class="fas fa-user-plus"></i> Registrarse
+                    </button>
+                    <button class="tab-btn" onclick="switchTab('admin')">
+                        <i class="fas fa-shield-alt"></i> Admin
+                    </button>
+                </div>
+
+                <!-- Login Form -->
+                <div id="login" class="form-tab active">
+                    <form id="loginForm" onsubmit="handleLogin(event)">
+                        <div class="form-group">
+                            <label for="loginEmail" class="form-label">
+                                <i class="fas fa-envelope"></i> Correo Electrónico
+                            </label>
+                            <input type="email" class="form-control" id="loginEmail" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="loginPassword" class="form-label">
+                                <i class="fas fa-lock"></i> Contraseña
+                            </label>
+                            <input type="password" class="form-control" id="loginPassword" required>
+                        </div>
+
+                        <button type="submit" class="btn btn-auth btn-login">
+                            <i class="fas fa-sign-in-alt"></i> Iniciar Sesión
+                        </button>
+                    </form>
+
+                    <div class="auth-footer">
+                        <p>¿No tienes cuenta? <a onclick="switchTab('register')">Regístrate aquí</a></p>
+                    </div>
+                </div>
+
+                <!-- Register Form -->
+                <div id="register" class="form-tab">
+                    <form id="registerForm" onsubmit="handleRegister(event)">
+                        <div class="form-group">
+                            <label for="registerName" class="form-label">
+                                <i class="fas fa-user"></i> Nombre Completo
+                            </label>
+                            <input type="text" class="form-control" id="registerName" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="registerEmail" class="form-label">
+                                <i class="fas fa-envelope"></i> Correo Electrónico
+                            </label>
+                            <input type="email" class="form-control" id="registerEmail" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="registerPhone" class="form-label">
+                                <i class="fas fa-phone"></i> Teléfono
+                            </label>
+                            <input type="tel" class="form-control" id="registerPhone" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="registerPassword" class="form-label">
+                                <i class="fas fa-lock"></i> Contraseña
+                            </label>
+                            <input type="password" class="form-control" id="registerPassword" minlength="6" required>
+                            <small class="text-muted d-block mt-2">Mínimo 6 caracteres</small>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="registerPasswordConfirm" class="form-label">
+                                <i class="fas fa-lock"></i> Confirmar Contraseña
+                            </label>
+                            <input type="password" class="form-control" id="registerPasswordConfirm" minlength="6" required>
+                        </div>
+
+                        <button type="submit" class="btn btn-auth btn-login">
+                            <i class="fas fa-user-plus"></i> Crear Cuenta
+                        </button>
+                    </form>
+
+                    <div class="auth-footer">
+                        <p>¿Ya tienes cuenta? <a onclick="switchTab('login')">Inicia sesión aquí</a></p>
+                    </div>
+                </div>
+
+                <!-- Admin Form -->
+                <div id="admin" class="form-tab">
+                    <form id="adminForm" onsubmit="handleAdminLogin(event)">
+                        <div class="alert alert-warning" role="alert">
+                            <i class="fas fa-lock"></i> <strong>Acceso Administrativo</strong>
+                            <p class="mb-0 mt-2 small">Solo para administradores autorizados</p>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="adminUser" class="form-label">
+                                <i class="fas fa-user"></i> Usuario
+                            </label>
+                            <input type="text" class="form-control" id="adminUser" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="adminPassword" class="form-label">
+                                <i class="fas fa-lock"></i> Contraseña
+                            </label>
+                            <input type="password" class="form-control" id="adminPassword" required>
+                        </div>
+
+                        <button type="submit" class="btn btn-auth btn-login">
+                            <i class="fas fa-sign-in-alt"></i> Acceder como Admin
+                        </button>
+                    </form>
+
+                    <div class="auth-footer">
+                        <p><small class="text-muted">Datos de prueba:<br>Usuario: admin<br>Contraseña: 1234</small></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div style="text-align: center; margin-top: 30px; color: white;">
+            <p>&copy; 2024 Lavadoras Violetta. Todos los derechos reservados.</p>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/auth.js"></script>
+</body>
+</html>

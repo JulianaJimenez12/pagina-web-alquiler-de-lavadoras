@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lavadoras Violetta - Alquiler de Lavadoras</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="css/styles.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary-dark sticky-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <i class="fas fa-droplet" style="font-size: 2rem; color: #A7D3E8; margin-right: 10px;"></i>
+                <span>Lavadoras Violetta</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#servicios">Servicios</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contacto">Contacto</a>
+                    </li>
+                    <!-- Cliente Logueado -->
+                    <li class="nav-item dropdown" id="clientMenuDropdown" style="display: none;">
+                        <a class="nav-link dropdown-toggle" href="#" id="clientDropdown" role="button" data-bs-toggle="dropdown">
+                            <i class="fas fa-user-circle"></i> <span id="clientNameNav">Mi Cuenta</span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="clientDropdown">
+                            <li><a class="dropdown-item" href="client.html">
+                                <i class="fas fa-history"></i> Mi Historial
+                            </a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" style="color: #2C5C84;" onclick="logoutFromIndex()">
+                                <i class="fas fa-sign-out-alt"></i> Cerrar Sesión
+                            </a></li>
+                        </ul>
+                    </li>
+                    <!-- Admin Logueado -->
+                    <li class="nav-item dropdown" id="adminMenuDropdown" style="display: none;">
+                        <a class="nav-link dropdown-toggle" href="#" id="adminDropdown" role="button" data-bs-toggle="dropdown">
+                            <i class="fas fa-shield-alt"></i> Admin
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="adminDropdown">
+                            <li><a class="dropdown-item" href="admin.html">
+                                <i class="fas fa-chart-bar"></i> Panel Administrativo
+                            </a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" style="color: #2C5C84;" onclick="logoutFromIndex()">
+                                <i class="fas fa-sign-out-alt"></i> Cerrar Sesión
+                            </a></li>
+                        </ul>
+                    </li>
+                    <!-- No Logueado -->
+                    <li class="nav-item" id="clientAuthLinks">
+                        <a class="nav-link" href="auth.html">
+                            <i class="fas fa-sign-in-alt"></i> Cliente
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Carrusel Hero - Solo Imágenes -->
+    <div id="carouselHero" class="carousel slide carousel-hero" data-bs-ride="carousel" data-bs-interval="5000">
+        <!-- Burbujas de fondo animadas -->
+        <div class="bubbles-background">
+            <div class="bubble-bg"></div>
+            <div class="bubble-bg"></div>
+            <div class="bubble-bg"></div>
+            <div class="bubble-bg"></div>
+            <div class="bubble-bg"></div>
+            <div class="bubble-bg"></div>
+            <div class="bubble-bg"></div>
+            <div class="bubble-bg"></div>
+        </div>
+
+        <!-- Textos de promoción lateral izquierda -->
+        <div class="promotion-text promo-left">
+            <div class="promo-badge">
+                <i class="fas fa-tag"></i>
+                <span>Descuento 20%</span>
+            </div>
+            <div class="promo-badge promo-delay-1">
+                <i class="fas fa-star"></i>
+                <span>Mejor Precio</span>
+            </div>
+            <div class="promo-badge promo-delay-2">
+                <i class="fas fa-bolt"></i>
+                <span>Envío Gratis</span>
+            </div>
+        </div>
+
+        <!-- Textos de promoción lateral derecha -->
+        <div class="promotion-text promo-right">
+            <div class="promo-badge">
+                <i class="fas fa-gift"></i>
+                <span>Oferta Especial</span>
+            </div>
+            <div class="promo-badge promo-delay-1">
+                <i class="fas fa-check-circle"></i>
+                <span>Alquiler Flexible</span>
+            </div>
+            <div class="promo-badge promo-delay-2">
+                <i class="fas fa-heart"></i>
+                <span>Con Amor</span>
+            </div>
+        </div>
+
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselHero" data-bs-slide-to="0" class="active" aria-current="true"></button>
+            <button type="button" data-bs-target="#carouselHero" data-bs-slide-to="1"></button>
+            <button type="button" data-bs-target="#carouselHero" data-bs-slide-to="2"></button>
+        </div>
+        <div class="carousel-inner">
+            <!-- Slide 1 - Lavadoras Violetta -->
+            <div class="carousel-item active carousel-slide-1" style="background-image: url('assets/img/lavadora-azul.svg'); background-size: contain; background-repeat: no-repeat; background-position: center; min-height: 500px;">
+            </div>
+            <!-- Slide 2 - Amplia Variedad -->
+            <div class="carousel-item carousel-slide-2" style="background-image: url('assets/img/lavadora-azul.svg'); background-size: contain; background-repeat: no-repeat; background-position: center; min-height: 500px;">
+            </div>
+            <!-- Slide 3 - Lavadoras Violettas -->
+            <div class="carousel-item carousel-slide-3" style="background-image: url('assets/img/lavadora-azul.svg'); background-size: contain; background-repeat: no-repeat; background-position: center; min-height: 500px;">
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselHero" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+            <span class="visually-hidden">Anterior</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselHero" data-bs-slide="next">
+            <span class="carousel-control-next-icon"></span>
+            <span class="visually-hidden">Siguiente</span>
+        </button>
+    </div>
+
+    <!-- Servicios Section -->
+    <section id="servicios" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center mb-5 fw-bold">Nuestros Servicios</h2>
+            <div class="row g-4">
+                <!-- Lavadora Básica -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card service-card h-100">
+                        <div class="card-body">
+                            <div class="service-icon">
+                                <i class="fas fa-circle-notch"></i>
+                            </div>
+                            <h5 class="card-title text-primary-dark">Lavadora Básica</h5>
+                            <p class="card-text text-muted">Modelo compacto de 6 kg, ideal para departamentos</p>
+                            <ul class="list-unstyled mb-3">
+                                <li><i class="fas fa-check" style="color: #2C5C84;"></i> Lavado normal (40 min)</li>
+                                <li><i class="fas fa-check" style="color: #2C5C84;"></i> Lavado rápido (20 min)</li>
+                                <li><i class="fas fa-check" style="color: #2C5C84;"></i> Lavado delicado (50 min)</li>
+                                <li><i class="fas fa-check" style="color: #2C5C84;"></i> Prelavado automático</li>
+                                <li><i class="fas fa-check" style="color: #2C5C84;"></i> Centrifugado variable</li>
+                            </ul>
+                            <h4 class="text-primary-dark fw-bold">$12,500/hora</h4>
+                            <button class="btn btn-primary-dark w-100 mt-3" onclick="openRentalModal('Lavadora Básica', 12500)">
+                                Alquilar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Lavadora Premium -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card service-card h-100 border-warning">
+                        <div class="ribbon ribbon-warning">POPULAR</div>
+                        <div class="card-body">
+                            <div class="service-icon">
+                                <i class="fas fa-circle"></i>
+                            </div>
+                            <h5 class="card-title text-primary-dark">Lavadora Premium</h5>
+                            <p class="card-text text-muted">Modelo de 8 kg con tecnología inverter</p>
+                            <ul class="list-unstyled mb-3">
+                                <li><i class="fas fa-check" style="color: #2C5C84;"></i> Lavado automático (35 min)</li>
+                                <li><i class="fas fa-check" style="color: #2C5C84;"></i> Eco mode (25 min)</li>
+                                <li><i class="fas fa-check" style="color: #2C5C84;"></i> Lavado intenso (60 min)</li>
+                                <li><i class="fas fa-check" style="color: #2C5C84;"></i> Detección inteligente de carga</li>
+                                <li><i class="fas fa-check" style="color: #2C5C84;"></i> Dosificación automática</li>
+                            </ul>
+                            <h4 class="text-primary-dark fw-bold">$18,900/hora</h4>
+                            <button class="btn btn-primary-dark w-100 mt-3" onclick="openRentalModal('Lavadora Premium', 18900)">
+                                Alquilar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Lavadora Deluxe -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card service-card h-100">
+                        <div class="card-body">
+                            <div class="service-icon">
+                                <i class="fas fa-crown"></i>
+                            </div>
+                            <h5 class="card-title text-primary-dark">Lavadora Deluxe</h5>
+                            <p class="card-text text-muted">Modelo de 10 kg con inteligencia artificial</p>
+                            <ul class="list-unstyled mb-3">
+                                <li><i class="fas fa-check" style="color: #2C5C84;"></i> Al Smart Wash (30 min)</li>
+                                <li><i class="fas fa-check" style="color: #2C5C84;"></i> Steam & Refresh (40 min)</li>
+                                <li><i class="fas fa-check" style="color: #2C5C84;"></i> Vapor desinfectante</li>
+                                <li><i class="fas fa-check" style="color: #2C5C84;"></i> Control de humedad</li>
+                                <li><i class="fas fa-check" style="color: #2C5C84;"></i> 20+ programas especiales</li>
+                            </ul>
+                            <h4 class="text-primary-dark fw-bold">$24,350/hora</h4>
+                            <button class="btn btn-primary-dark w-100 mt-3" onclick="openRentalModal('Lavadora Deluxe', 24350)">
+                                Alquilar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Secadora Estándar -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card service-card h-100">
+                        <div class="card-body">
+                            <div class="service-icon">
+                                <i class="fas fa-fan"></i>
+                            </div>
+                            <h5 class="card-title text-primary-dark">Secadora Estándar</h5>
+                            <p class="card-text text-muted">Secadora de condensación de 6 kg</p>
+                            <ul class="list-unstyled mb-3">
+                                <li><i class="fas fa-check" style="color: #2C5C84;"></i> Secado normal (45 min)</li>
+                                <li><i class="fas fa-check" style="color: #2C5C84;"></i> Secado suave (60 min)</li>
+                                <li><i class="fas fa-check" style="color: #2C5C84;"></i> Control de temperatura</li>
+                                <li><i class="fas fa-check" style="color: #2C5C84;"></i> Sensor de humedad</li>
+                            </ul>
+                            <h4 class="text-primary-dark fw-bold">$8,900/hora</h4>
+                            <button class="btn btn-primary-dark w-100 mt-3" onclick="openRentalModal('Secadora Estándar', 8900)">
+                                Alquilar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Combo Pack Premium -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card service-card h-100 border-success">
+                        <div class="ribbon ribbon-success">OFERTA</div>
+                        <div class="card-body">
+                            <div class="service-icon">
+                                <i class="fas fa-boxes"></i>
+                            </div>
+                            <h5 class="card-title text-primary-dark">Combo Pack Premium</h5>
+                            <p class="card-text text-muted">Lavadora Premium + Secadora juntas</p>
+                            <ul class="list-unstyled mb-3">
+                                <li><i class="fas fa-check" style="color: #2C5C84;"></i> Lavadora Premium</li>
+                                <li><i class="fas fa-check" style="color: #2C5C84;"></i> Secadora Estándar</li>
+                                <li><i class="fas fa-check" style="color: #2C5C84;"></i> Descuento especial</li>
+                                <li><i class="fas fa-check" style="color: #2C5C84;"></i> Instalación incluida</li>
+                            </ul>
+                            <h4 class="text-primary-dark fw-bold">$26,500/hora</h4>
+                            <button class="btn btn-primary-dark w-100 mt-3" onclick="openRentalModal('Combo Pack Premium', 26500)">
+                                Alquilar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Servicio Técnico -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card service-card h-100">
+                        <div class="card-body">
+                            <div class="service-icon">
+                                <i class="fas fa-tools"></i>
+                            </div>
+                            <h5 class="card-title text-primary-dark">Servicio Técnico Premium</h5>
+                            <p class="card-text text-muted">Mantenimiento y reparación especializados</p>
+                            <ul class="list-unstyled mb-3">
+                                <li><i class="fas fa-check" style="color: #2C5C84;"></i> Atención prioritaria</li>
+                                <li><i class="fas fa-check" style="color: #2C5C84;"></i> Diagnóstico gratuito</li>
+                                <li><i class="fas fa-check" style="color: #2C5C84;"></i> Repuestos originales</li>
+                                <li><i class="fas fa-check" style="color: #2C5C84;"></i> Garantía de servicio</li>
+                            </ul>
+                            <h4 class="text-primary-dark fw-bold">$15,000/visita</h4>
+                            <button class="btn btn-primary-dark w-100 mt-3" onclick="openRentalModal('Servicio Técnico Premium', 15000)">
+                                Solicitar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Calidad Garantizada -->
+    <section class="py-5 bg-primary-dark text-white">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-4 mb-lg-0">
+                    <h2 class="display-5 fw-bold mb-4">¿Quiénes somos?</h2>
+                    <p class="fs-6 mb-4">Somos una empresa dedicada al alquiler de lavadoras para hogares, negocios y pequeños emprendimientos que buscan una solución práctica, rápida y económica para su lavado diario.</p>
+                    <p class="fs-6 mb-4">Nuestro compromiso es brindar equipos en excelente estado, revisados y desinfectados antes de cada alquiler, junto con un acompañamiento cercano y un servicio de soporte siempre disponible para ayudarte en lo que necesites.</p>
+                    <p class="fs-5 mb-4" style="font-style: italic; color: #A7D3E8; font-weight: 500;">💙 Limpieza con amor, precios con sentido.</p>
+                    <ul class="list-unstyled">
+                        <li class="mb-3">
+                            <i class="fas fa-check-circle" style="color: #A7D3E8;"></i>
+                            <span class="ms-3">Alquileres de lavado</span>
+                        </li>
+                        <li class="mb-3">
+                            <i class="fas fa-check-circle" style="color: #A7D3E8;"></i>
+                            <span class="ms-3">Sistema de gestión</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle" style="color: #A7D3E8;"></i>
+                            <span class="ms-3">Alquiler por horas o por día/noche</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-lg-6 text-center">
+                    <h3 class="mb-4" style="color: #A7D3E8; font-size: 1.8rem;">Nuestros Valores</h3>
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <div style="background: rgba(255,255,255,0.1); padding: 20px; border-radius: 10px; border-left: 4px solid #A7D3E8;">
+                                <i class="fas fa-handshake" style="font-size: 2rem; color: #A7D3E8; margin-bottom: 10px; display: block;"></i>
+                                <p class="fw-bold" style="color: #A7D3E8;">Responsabilidad</p>
+                                <p class="small">Comprometidos con cada cliente</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div style="background: rgba(255,255,255,0.1); padding: 20px; border-radius: 10px; border-left: 4px solid #A7D3E8;">
+                                <i class="fas fa-clock" style="font-size: 2rem; color: #A7D3E8; margin-bottom: 10px; display: block;"></i>
+                                <p class="fw-bold" style="color: #A7D3E8;">Puntualidad</p>
+                                <p class="small">Siempre a tiempo</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div style="background: rgba(255,255,255,0.1); padding: 20px; border-radius: 10px; border-left: 4px solid #A7D3E8;">
+                                <i class="fas fa-shield-alt" style="font-size: 2rem; color: #A7D3E8; margin-bottom: 10px; display: block;"></i>
+                                <p class="fw-bold" style="color: #A7D3E8;">Honestidad</p>
+                                <p class="small">Transparencia en todo</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div style="background: rgba(255,255,255,0.1); padding: 20px; border-radius: 10px; border-left: 4px solid #A7D3E8;">
+                                <i class="fas fa-list" style="font-size: 2rem; color: #A7D3E8; margin-bottom: 10px; display: block;"></i>
+                                <p class="fw-bold" style="color: #A7D3E8;">Organización</p>
+                                <p class="small">Servicios bien coordinados</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Galería de Fotos -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center mb-2 fw-bold text-primary-dark">Galería de Nuestros Servicios</h2>
+            <p class="text-center text-muted mb-5">Conoce nuestras instalaciones y equipos de calidad</p>
+            
+            <!-- Filtros -->
+            <div class="text-center mb-5">
+                <button class="btn btn-outline-primary-dark me-2 mb-2 filter-btn active" data-filter="all">
+                    <i class="fas fa-th"></i> Todos
+                </button>
+                <button class="btn btn-outline-primary-dark me-2 mb-2 filter-btn" data-filter="lavadoras">
+                    <i class="fas fa-circle-notch"></i> Lavadoras
+                </button>
+                <button class="btn btn-outline-primary-dark me-2 mb-2 filter-btn" data-filter="secadoras">
+                    <i class="fas fa-wind"></i> Secadoras
+                </button>
+                <button class="btn btn-outline-primary-dark mb-2 filter-btn" data-filter="servicio">
+                    <i class="fas fa-tools"></i> Servicio
+                </button>
+            </div>
+
+            <!-- Galería Grid -->
+            <div class="gallery-grid">
+                <!-- Lavadoras -->
+                <div class="gallery-item" data-category="lavadoras">
+                    <div class="gallery-image-wrapper">
+                        <img src="assets/lavadora-basica.svg" alt="Lavadora Básica" style="width: 100%; height: 100%; object-fit: cover;">
+                        <div class="gallery-overlay">
+                            <button class="btn btn-light btn-sm" data-bs-toggle="modal" data-bs-target="#galleryModal" onclick="openGalleryModal('Lavadora Básica')">
+                                <i class="fas fa-eye"></i> Ver
+                            </button>
+                        </div>
+                    </div>
+                    <h5 class="text-center mt-3 text-primary-dark">Lavadora Básica</h5>
+                    <p class="text-center text-muted small">Equipo confiable y económico</p>
+                </div>
+
+                <div class="gallery-item" data-category="lavadoras">
+                    <div class="gallery-image-wrapper">
+                        <img src="assets/lavadora-premium.svg" alt="Lavadora Premium" style="width: 100%; height: 100%; object-fit: cover;">
+                        <div class="gallery-overlay">
+                            <button class="btn btn-light btn-sm" data-bs-toggle="modal" data-bs-target="#galleryModal" onclick="openGalleryModal('Lavadora Premium')">
+                                <i class="fas fa-eye"></i> Ver
+                            </button>
+                        </div>
+                    </div>
+                    <h5 class="text-center mt-3 text-primary-dark">Lavadora Premium</h5>
+                    <p class="text-center text-muted small">Tecnología avanzada y eficiente</p>
+                </div>
+
+                <div class="gallery-item" data-category="lavadoras">
+                    <div class="gallery-image-wrapper">
+                        <img src="assets/lavadora-deluxe.svg" alt="Lavadora Deluxe" style="width: 100%; height: 100%; object-fit: cover;">
+                        <div class="gallery-overlay">
+                            <button class="btn btn-light btn-sm" data-bs-toggle="modal" data-bs-target="#galleryModal" onclick="openGalleryModal('Lavadora Deluxe')">
+                                <i class="fas fa-eye"></i> Ver
+                            </button>
+                        </div>
+                    </div>
+                    <h5 class="text-center mt-3 text-primary-dark">Lavadora Deluxe</h5>
+                    <p class="text-center text-muted small">La máxima experiencia en lavado</p>
+                </div>
+
+                <!-- Secadoras -->
+                <div class="gallery-item" data-category="secadoras">
+                    <div class="gallery-image-wrapper">
+                        <img src="assets/secadora-estandar.svg" alt="Secadora Estándar" style="width: 100%; height: 100%; object-fit: cover;">
+                        <div class="gallery-overlay">
+                            <button class="btn btn-light btn-sm" data-bs-toggle="modal" data-bs-target="#galleryModal" onclick="openGalleryModal('Secadora Estándar')">
+                                <i class="fas fa-eye"></i> Ver
+                            </button>
+                        </div>
+                    </div>
+                    <h5 class="text-center mt-3 text-primary-dark">Secadora Estándar</h5>
+                    <p class="text-center text-muted small">Secado rápido y confiable</p>
+                </div>
+
+                <!-- Combos -->
+                <div class="gallery-item" data-category="all">
+                    <div class="gallery-image-wrapper">
+                        <img src="assets/combo-pack.svg" alt="Combo Pack Premium" style="width: 100%; height: 100%; object-fit: cover;">
+                        <div class="gallery-overlay">
+                            <button class="btn btn-light btn-sm" data-bs-toggle="modal" data-bs-target="#galleryModal" onclick="openGalleryModal('Combo Pack Premium')">
+                                <i class="fas fa-eye"></i> Ver
+                            </button>
+                        </div>
+                    </div>
+                    <h5 class="text-center mt-3 text-primary-dark">Combo Pack Premium</h5>
+                    <p class="text-center text-muted small">Solución completa con descuento</p>
+                </div>
+
+                <!-- Servicio Técnico -->
+                <div class="gallery-item" data-category="servicio">
+                    <div class="gallery-image-wrapper">
+                        <img src="assets/servicio-tecnico.svg" alt="Servicio Técnico" style="width: 100%; height: 100%; object-fit: cover;">
+                        <div class="gallery-overlay">
+                            <button class="btn btn-light btn-sm" data-bs-toggle="modal" data-bs-target="#galleryModal" onclick="openGalleryModal('Servicio Técnico')">
+                                <i class="fas fa-eye"></i> Ver
+                            </button>
+                        </div>
+                    </div>
+                    <h5 class="text-center mt-3 text-primary-dark">Servicio Técnico Premium</h5>
+                    <p class="text-center text-muted small">Mantenimiento profesional</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal Galería -->
+    <div class="modal fade" id="galleryModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header bg-primary-dark text-white">
+                    <h5 class="modal-title" id="galleryModalTitle">Galería</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="text-center">
+                        <div class="gallery-modal-placeholder mb-3" id="galleryModalImage" style="min-height: 300px; display: flex; align-items: center; justify-content: center;">
+                            <div class="spinner-border text-primary-dark" role="status">
+                                <span class="visually-hidden">Cargando...</span>
+                            </div>
+                        </div>
+                        <h4 id="galleryModalName" class="text-primary-dark mb-3">Nombre del servicio</h4>
+                        <p id="galleryModalDescription" class="text-muted">Descripción del servicio</p>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-primary-dark" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#rentalModal" onclick="updateRentalFromGallery()">
+                        <i class="fas fa-shopping-cart"></i> Alquilar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Alquiler -->
+    <div class="modal fade" id="rentalModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-primary-dark text-white">
+                    <h5 class="modal-title">Crear Pedido</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="rentalForm">
+                        <div class="mb-3">
+                            <label for="serviceName" class="form-label">Servicio</label>
+                            <input type="text" class="form-control" id="serviceName" readonly>
+                        </div>
+                        <div class="mb-3" id="guestClientFields">
+                            <label for="clientName" class="form-label">Nombre del Cliente</label>
+                            <input type="text" class="form-control" id="clientName">
+                        </div>
+                        <div class="mb-3" id="guestEmailField">
+                            <label for="clientEmail" class="form-label">Correo</label>
+                            <input type="email" class="form-control" id="clientEmail">
+                        </div>
+                        <div class="mb-3" id="guestPhoneField">
+                            <label for="clientPhone" class="form-label">Teléfono</label>
+                            <input type="tel" class="form-control" id="clientPhone">
+                        </div>
+                        <div class="mb-3" id="registeredClientInfo" style="display: none;">
+                            <div class="alert alert-info">
+                                <i class="fas fa-info-circle"></i>
+                                <strong id="registeredClientName"></strong><br>
+                                <small id="registeredClientEmail"></small>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="rentalDate" class="form-label">Fecha de Entrega</label>
+                            <input type="date" class="form-control" id="rentalDate" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="rentalHours" class="form-label">Cantidad de Horas</label>
+                            <input type="number" class="form-control" id="rentalHours" min="1" value="1" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="totalPrice" class="form-label">Precio Total</label>
+                            <div class="input-group">
+                                <span class="input-group-text">$</span>
+                                <input type="text" class="form-control" id="totalPrice" readonly>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="notes" class="form-label">Notas Adicionales</label>
+                            <textarea class="form-control" id="notes" rows="3"></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary-dark" onclick="submitRental()">Confirmar Pedido</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contacto Section -->
+    <section id="contacto" class="py-5 bg-primary-dark text-white">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 mb-4">
+                    <h3 class="mb-4">Contacto</h3>
+                    <p><i class="fas fa-phone"></i> Teléfono: 3114014564</p>
+                    <p><i class="fas fa-envelope"></i> Email: Lavadorasvioletta10@gmail.com</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Dirección: Cali/Alfonso Lopez</p>
+                    <p><i class="fas fa-clock"></i> Horario: Lunes - Domingo 8:00 AM - 10:00 PM</p>
+                </div>
+                <div class="col-md-6">
+                    <h3 class="mb-4">Síguenos</h3>
+                    <p>
+                        <a href="#" class="text-white me-3"><i class="fab fa-facebook fa-2x"></i></a>
+                        <a href="#" class="text-white me-3"><i class="fab fa-instagram fa-2x"></i></a>
+                        <a href="#" class="text-white me-3"><i class="fab fa-twitter fa-2x"></i></a>
+                        <a href="#" class="text-white me-3"><i class="fab fa-whatsapp fa-2x"></i></a>
+                    </p>
+                </div>
+            </div>
+            <hr class="bg-white">
+            <div class="text-center">
+                <p>&copy; 2024 Lavadoras Violetta. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
